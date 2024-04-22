@@ -1,0 +1,109 @@
+{%extends "base.html"%}{%block content%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/product_page.css')}}">
+<!--body-->
+<section class="picture ">
+
+    <div class="img-list ">
+        {%for image in data['files']%}
+        <div class="img-container ">
+            <img src="{{image['path']}}" alt="product ">
+        </div>
+        {%endfor%}
+    </div>
+
+</section>
+
+<section class="basic-info ">
+    <div class="name ">
+        <p>{{data['name']}}</p>
+    </div>
+    <div class="price-div ">
+        <div class="main ">
+            <p class="currency ">&#x20A6;</p>
+            <p class='amount'>{{data['price']/100}}</p>
+        </div>
+        <div class="prev "></div>
+        <div class="discount ">-30%</div>
+    </div>
+    <div class="star-review ">
+        <!--5 stars-->
+    </div>
+    <div class="in-stock ">
+        <div class="quantity-in-stock ">
+            <p class="label">In Stock: </p>
+            <p class="amount ">{{data['quantity']}}</p>
+        </div>
+        <div class="quantity-select ">
+            <p class="label">Quantity: </p>
+            <div class="gizmo ">
+                <button class="minus ">-</button>
+                <p>1</p>
+                <button class="plus ">+</button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="action-div ">
+    <button class="big-ATC ">Add to Cart</button>
+</div>
+<section class="product-details">
+    <div class="section-title"><strong>Product Details</strong></div>
+    <div class="descrip-card">
+        <div class="head">
+            <div class="title">Description</div>
+            <div class="more">></div>
+        </div>
+
+        <p>{{data['description'] | safe}}</p>
+    </div>
+</section>
+
+<section class="reviews-list ">
+    <div class="review-card ">
+        <div class="user-info ">
+            <div class="img-container ">
+                <img src=" " alt="profile-pic " srcset=" ">
+            </div>
+            <div class="info-container ">
+                <div class="top ">
+                    <div class="name ">Umar Mahmud</div>
+                    <div class="verify ">Verified purchase</div>
+                </div>
+                <div class="bottom ">
+                    <div class="date ">10/10/2024</div>
+                </div>
+            </div>
+        </div>
+        <div class="review-content ">
+            <p>hi there this is a cool product it is good. But it needs some more review</p>
+        </div>
+    </div>
+    <div class="review-card ">
+        <div class="user-info ">
+            <div class="img-container ">
+                <img src=" " alt="profile-pic " srcset=" ">
+            </div>
+            <div class="info-container ">
+                <div class="top ">
+                    <div class="name ">Umar Mahmud</div>
+                    <div class="verify ">Verified purchase</div>
+                </div>
+                <div class="bottom ">
+                    <div class="date ">10/10/2024</div>
+                </div>
+            </div>
+        </div>
+        <div class="review-content ">
+            <p>hi there this is a cool product it is good. But it needs some more review</p>
+        </div>
+    </div>
+
+</section>
+<section class="related-items ">
+    <div class="related ">
+        <!-- place where products related will be added dynamically -->
+    </div>
+</section> {%endblock%}

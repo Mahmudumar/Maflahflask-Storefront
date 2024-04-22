@@ -1,0 +1,24 @@
+{%extends "base.html"%} {%block title%}Mafflah Shop{%endblock%} {%block content%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/storefront.css')}}">
+<section class="products">
+    {%for product in products%}
+    <div class="product-card">
+        <div class="product-click" data-product-id="{{product['id']}}"></div>
+        <div class="img">
+            <!--thumbnail-->
+            {%if product['files']%}
+            <img src="{{product['files'][0]['path']}}" alt="produs">{%else%}
+            <img src="{{url_for('static', filename='imgs/logo_192.png')}}"> {%endif%} </div>
+        <div class="info">
+            <div class="name">{{product['name']}}</div>
+            <div class="price">&#x20A6;{{product['price']/100}}</div>
+        </div>
+        <div class="action">
+            <button>Add To Cart</button>
+        </div>
+
+    </div>
+    {%endfor%}
+
+</section>
+{%endblock%}

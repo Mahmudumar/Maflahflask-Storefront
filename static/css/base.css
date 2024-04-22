@@ -1,0 +1,243 @@
+/*This css is for every page that has
+a header and a footer*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --light-mafflah-green: #b6e2bd;
+    --light-mafflah-blue: hsl(216, 43%, 78%);
+    --mafflah-green: #49b85b;
+    --mafflah-blue: #456faf;
+    --header-height: 40px;
+    font-family: sans-serif;
+}
+
+a {
+    color: var(--mafflah-green);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+header {
+    position: fixed;
+    top: 0px;
+    display: flex;
+    width: 100%;
+    height: var(--header-height);
+    padding: 5px 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    background-color: #eee;
+}
+
+.left-header {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.options {
+    z-index: 99999999999;
+    margin-right: 10px;
+}
+
+.options div {
+    height: 2.2px;
+    width: 20px;
+    background-color: #111;
+    margin: 4px 0px;
+    border-radius: 1px;
+    transition: all 0.2s ease;
+}
+
+.opts .line1 {
+    transform: rotate(-45deg) translate(-6px, 5px);
+}
+
+.opts .line2 {
+    opacity: 0;
+}
+
+.opts .line3 {
+    transform: rotate(45deg) translate(-3px, -2.5px);
+}
+
+.left-header .store-info {
+    display: flex;
+    align-items: center;
+}
+
+.left-header .store-info img {
+    width: 50px;
+}
+
+.store-info .title {
+    font-size: 20px;
+    color: #111;
+    font-weight: 600;
+}
+
+.right-header {
+    display: flex;
+    justify-content: space-around;
+    width: fit-content;
+}
+
+.right-header button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 30px;
+    background-color: transparent;
+    border-style: none;
+    margin: 5px 0px;
+    border-radius: 20px;
+    /* background-color: #444; */
+}
+
+.profile svg,
+.cart svg {
+    fill: #111;
+}
+
+body {
+    margin-top: 40px;
+    width: 100%;
+    height: fit-content;
+    background-color: #e8f5ea;
+}
+
+.search-div {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 5px 10px;
+    background-color: #eee;
+}
+
+.search-bar {
+    display: flex;
+    background-color: transparent;
+    width: 300px;
+    padding: 2px 10px;
+    align-items: center;
+    border: 1px solid #666;
+    border-radius: 15px;
+}
+
+.search-bar input {
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 20px;
+}
+
+.search-bar .search-icon {
+    height: 20px;
+}
+
+.search-icon svg {
+    background-color: transparent;
+}
+
+
+/*body elements stay here*/
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #444;
+    height: 100px;
+}
+
+footer .to-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #888;
+    width: 90%;
+    height: 40px;
+    border: none;
+    color: #eee;
+    padding: 4px 0px 6px 0px;
+}
+
+.arrow {
+    margin-bottom: 4px;
+}
+
+.to-top .arrow .div1,
+.to-top .arrow .div2 {
+    background-color: #eee;
+    height: 2px;
+    width: 10px;
+    margin: 2px;
+}
+
+.arrow .div1 {
+    transform: rotate(-22deg) translate(-10px);
+}
+
+.arrow .div2 {
+    transform: rotate(22deg);
+}
+
+.to-top:active {
+    background-color: #696969;
+}
+
+.options-list {
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    top: 40px;
+    left: 0;
+    width: 95%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    transform: translate(-100%);
+    transition: transform 0.2s ease;
+    background-color: #eee;
+    z-index: 9999999999999;
+}
+
+.optionss .options-list {
+    transform: translateX(0%);
+}
+
+
+/*TODO animation*/
+
+.options-list section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    padding: 20px 10px 5px 5px;
+}
+
+.options-list button {
+    text-align: left;
+    padding: 10px 0px;
+    background-color: #eee;
+    border: none;
+}
+
+.options-list button:active {
+    background-color: #cff0cf;
+}
+
+.options-list .section-title {
+    display: flex;
+    justify-content: space-between;
+}
