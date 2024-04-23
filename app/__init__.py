@@ -1,11 +1,9 @@
 from flask import Flask, render_template, redirect, url_for
-import paystacker
-
-
 import requests
 from dotenv import load_dotenv
 import os
 
+app = Flask(__name__,static_url_path='/static')
 
 load_dotenv()
 PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
@@ -20,7 +18,7 @@ def get_products():
             'Authorization': f'Bearer {PAYSTACK_SECRET_KEY}'
         })
     except Exception as e:
-        response={}
+        response = {}
     return response.json()['data']
 
 
@@ -30,14 +28,6 @@ def get_product(_id):
         'Authorization': f'Bearer {PAYSTACK_SECRET_KEY}'
     })
     return response.json()
-
-
-if __name__ == "__main__":
-    for product in get_products():
-        if product['files']:
-            dic = product['files'][0]['path']
-            #print(dic)
-            pass
 
 # dictkeys = (['digital_assets',
 #             'integration',
@@ -52,8 +42,8 @@ if __name__ == "__main__":
 #             'domain', 'active', 'features',
 
 #             'in_stock', 'metadata', 'slug', 'success_message', 'redirect_url', 'split_code', 'notification_emails',
-#             'minimum_orderable', 'maximum_orderable', 
-#             'low_stock_alert', 'stock_threshold', 
+#             'minimum_orderable', 'maximum_orderable',
+#             'low_stock_alert', 'stock_threshold',
 #             'expires_in', 'id', 'createdAt', 'updatedAt'])
 # p = ['id',
 #     'name',
@@ -90,26 +80,27 @@ if __name__ == "__main__":
 
 
 
-
-
-app=Flask(__name__)
-
-
 def to_naira(amount_in_kobo):
     return amount_in_kobo / 100
+
+
 @app.route('/')
 def index():
-    products=paystacker.get_products()
+    products = get_products()
     return render_template('storefront.html', products=products)
 
-viewed_product=dict()
+
+viewed_product = dict()
+
+
 @app.route('/<id_>')
 def get_details(id_):
-    prod=paystacker.get_product(id_)
-    data=prod['data']
+    prod = get_product(id_)
+    data = prod['data']
     viewed_product.update(data)
     return redirect(url_for('product_details'))
 
+
 @app.route('/product_details')
 def product_details():
-    return render_template('product_details.html',data=viewed_product)
+    return render_template('product_details.html', data=viewed_product)
